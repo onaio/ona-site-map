@@ -2,13 +2,25 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Display a popup on click</title>
+<title>Ona projects</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 <style>
-	body { margin: 0; padding: 0; }
+	body { margin: 0; padding: 0;}
 	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+  .popup-title { color:#E05939; font-size:1.2em; font-weight:bold; margin-bottom: 6px; }
+  .mapboxgl-popup {
+    font-family: 'Mulish','Adamina','Helvetica Neue',Helvetica,Roboto,Arial,sans-serif !important;
+  }
+  .popup-meta { color: #666666; }
+  .popup-description { color:#212121; }
+  .popup-product { color:#E05939; font-size:.8em; text-transform: uppercase; margin-top: 6px; letter-spacing: .5px;
+  }
+  .popup-product a { text-decoration: none; color:#E05939;
+  }
+  .popup-product a:hover { text-decoration: underline;
+}
 </style>
 </head>
 <body>
@@ -42,24 +54,12 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
           'type': 'Feature',
           'properties': {
             'description':
-            '<span style="color:#E05939; font-size:1.2em; font-weight:bold">Zimbabwe</span><br />Data visualization services for the Zimbabwe Idai Recovery Project<br />&#187; Product: Canopy Insights',
+            '<div class="popup-title">Humanitarian Performance Monitoring Dashboard</div><div class="popup-meta">Fiji &#xb7; UNICEF Pacific</div><div class="popup-description">Data management for emergencies and education</div><div class="popup-product">&#x203A; <a href="#">Canopy Analytics</a></div>',
             'icon': 'tw-provincial-expy-2'
           },
           'geometry': {
             'type': 'Point',
-            'coordinates': [31.053028, -17.824858]
-          }
-        },
-        {
-          'type': 'Feature',
-          'properties': {
-            'description':
-            '<strong>Fiji</strong><p><a href="https://ona.io" target="_blank" title="Opens in a new window">Link</a> blah blah blah</p>',
-            'icon': 'tw-provincial-expy-2'
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [178.065033, -17.713371]
+            'coordinates': [178.065033, -17.71337]
           }
         },
         {
