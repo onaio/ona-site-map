@@ -9,15 +9,12 @@
 <style>
 	body { margin: 0; padding: 0;}
 	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
-  .popup-title { color:#E05939; font-size:1.2em; font-weight:bold; margin-bottom: 6px; }
-  .mapboxgl-popup {
-    font-family: 'Mulish','Adamina','Helvetica Neue',Helvetica,Roboto,Arial,sans-serif !important;
-  }
-  .popup-meta { color: #666666; }
+  .popup-title { color:#E05939; font-size:1.2em; font-weight:bold; margin-bottom: 2px; }
+  .popup-product { color: #212121; margin-top: 6px;}
   .popup-description { color:#212121; }
-  .popup-product { color:#E05939; font-size:.8em; text-transform: uppercase; margin-top: 6px; letter-spacing: .5px;
+  .popup-meta { color:#212121; font-size:.9em; text-transform: uppercase; margin-bottom: 6px; letter-spacing: .5px;
   }
-  .popup-product a { text-decoration: none; color:#E05939;
+  .popup-product a { text-decoration: none; color:#212121;
   }
   .popup-product a:hover { text-decoration: underline;
 }
@@ -36,8 +33,8 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/ona/ckhe1gi5408zw19o1paqnmb7e',
-    center: [46, 6],
-    zoom: 2.3
+    center: [81, 6],
+    zoom: 1.9
   });
 
   map.scrollZoom.disable();
@@ -54,7 +51,7 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
           'type': 'Feature',
           'properties': {
             'description':
-            '<div class="popup-title">Humanitarian Performance Monitoring Dashboard</div><div class="popup-meta">Fiji &#xb7; UNICEF Pacific</div><div class="popup-description">Data management for emergencies and education</div><div class="popup-product">&#x203A; <a href="#">Canopy Analytics</a></div>',
+            '<div class="popup-title">Humanitarian Performance Monitoring Dashboard</div><div class="popup-meta">Fiji &#xb7; UNICEF Pacific</div><div class="popup-description">Data management for emergencies and education</div><div class="popup-product">Product: <a href="#">Canopy Analytics</a></div>',
             'icon': 'tw-provincial-expy-2'
           },
           'geometry': {
@@ -66,60 +63,36 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
           'type': 'Feature',
           'properties': {
             'description':
-            '<strong>Cambodia</strong><p><a href="https://ona.io" target="_blank" title="Opens in a new window">Link</a> blah blah blah</p>',
+            '<div class="popup-title">Hello Mwana</div><div class="popup-meta">Zimbabwe &#xb7; UNICEF</div><div class="popup-description">Hello Mwana uses SMS to report data and client information with a goal to help reduce maternal, neonatal and child mortality.</div><div class="popup-product">Product: <a href="#">Ona Data</a></div>',
             'icon': 'tw-provincial-expy-2'
           },
           'geometry': {
             'type': 'Point',
-            'coordinates': [104.9806, 11.9880]
+            'coordinates': [29.89738917028741, -19.033243044768888]
           }
         },
         {
           'type': 'Feature',
           'properties': {
             'description':
-            '<strong>Ona Rules!!!</strong><p><a href="https://ona.io" target="_blank" title="Opens in a new window">Link</a> blah blah blah</p>',
+            '<div class="popup-title">Community Health Worker App</div><div class="popup-meta">Liberia &#xb7; Last Mile Health</div><div class="popup-description">An offline-focused OpenSRP implementation that equips CHWs to improve health outcomes in the hardes-to-reach villages.</div><div class="popup-product">Product: <a href="#">OpenSRP Enterprise</a></div>',
             'icon': 'tw-provincial-expy-2'
           },
           'geometry': {
             'type': 'Point',
-            'coordinates': [37.906193,-2.223559]
-          }
-        },
-        {
-          'type': 'Feature',
-          'properties': {
-            'description':
-            '<strong>South Sudan</strong><p><a href="https://ona.io" target="_blank" title="Opens in a new window">Link</a> blah blah blah</p>',
-            'icon': 'tw-provincial-expy-2'
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [9.537499, 33.886917]
-          }
-        },
-        {
-          'type': 'Feature',
-          'properties': {
-            'description':
-            '<strong>DC</strong><p>blah blah blah</p>',
-            'icon': 'tw-provincial-expy-2'
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [-77.0364,38.8951]
+            'coordinates': [-7.716625530707781, 5.851205406393821]
           }
         },
           {
             'type': 'Feature',
             'properties': {
               'description':
-              '<strong>Ona Rules!!!</strong><p><a href="https://ona.io" target="_blank" title="Opens in a new window">Link</a> blah blah blah</p>',
+              '<div class="popup-title">Child Friendly Communities</div><div class="popup-meta">West and Central Africa &#xb7; UNICEF</div><div class="popup-description">Communitiy platform across five countries for reducing child and maternal mortality.</div><div class="popup-product">Product: <a href="#">OpenSRP Enterprise</a></div>',
               'icon': 'tw-provincial-expy-2'
             },
             'geometry': {
               'type': 'Point',
-              'coordinates': [8.675277,9.08199]
+              'coordinates': [-17.520735215342867, 14.744597697865371]
             }
           }
         ]
