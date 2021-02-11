@@ -29,7 +29,157 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 </style>
 <div id="map"></div>
 <script>
-	mapboxgl.accessToken = 'pk.eyJ1Ijoib25hIiwiYSI6IlVYbkdyclkifQ.0Bz-QOOXZZK01dq4MuMImQ';
+
+  var features = [
+    // format [title, location, partner, description, product, coords]
+    [
+      'Humanitarian Performance Monitoring Dashboard',
+      'Fiji',
+      'UNICEF Pacific',
+      'Data management for emergencies and education',
+      'Canopy Analytics',
+      [178.065033, -17.71337]
+    ],
+    [
+      'Hello Mwana',
+      'Zimbabwe',
+      'UNICEF',
+      'Hello Mwana uses SMS to report data and client information with a goal to help reduce maternal, neonatal and child mortality.',
+      'Ona Data',
+      [29.89738917028741, -19.033243044768888]
+    ],
+    [
+      'Community Health Worker App',
+      'Liberia',
+      'Last Mile Health',
+      'An offline-focused OpenSRP implementation that equips CHWs to improve health outcomes in the hardes-to-reach villages.',
+      'OpenSRP Enterprise',
+      [-7.716625530707781, 5.851205406393821]
+    ],
+    [
+      'Mobile Operational Data Acquisition Platform',
+      'Worldwide',
+      'WFP Global',
+      'Uses Ona Data and RapidPro to serve as global data collection and management systems, facilitating structured data collection and sharing across WFP programs, country, regional, and global offices.',
+      'Ona Data',
+      [12.407255692520218, 41.821809374594224]
+    ],
+    [
+      'Child Friendly Communities',
+      'West and Central Africa',
+      'UNICEF',
+      'Communitiy platform across five countries for reducing child and maternal mortality.',
+      'OpenSRP Enterprise',
+      [-17.520735215342867, 14.744597697865371]
+    ],
+    [
+      'Reveal Malaria Elimination',
+      'Zambia, Thailand, Namibia',
+      'CHAI',
+      'Task-based geo-spacing (map-based) planning and service delivery (i.e. indoor residual spraying or vector control) for Malaria elimination and vector control.',
+      'OpenSRP Enterprise',
+      [27.57433471865827, -15.231573135812603]
+    ],
+    [
+      'Reveal Malaria Elimination',
+      'Zambia, Thailand, Namibia',
+      'CHAI',
+      'Task-based geo-spacing (map-based) planning and service delivery (i.e. indoor residual spraying or vector control) for Malaria elimination and vector control.',
+      'OpenSRP Enterprise',
+      [100.66154048100621, 15.650397010644387]
+    ],
+    [
+      'Reveal Malaria Elimination',
+      'Zambia, Thailand, Namibia',
+      'CHAI',
+      'Task-based geo-spacing (map-based) planning and service delivery (i.e. indoor residual spraying or vector control) for Malaria elimination and vector control.',
+      'OpenSRP Enterprise',
+      [16.94536149316961, -22.579443424043017]
+    ],
+    [
+      'Afya-tek',
+      'Tanzania',
+      'D-tree International',
+      'OpenSRP CHW application with addition of Addo workers (community-based drug dispencers / pharmacies).',
+      'OpenSRP Enterprise',
+      [35.30250463223855, -5.960120254688478]
+    ],
+    [
+      'Malawi eRegister Project',
+      'Malawi',
+      'GIZ',
+      'HF app / EIR, supporting various health domains such as ANC, Maternity and Delivery, Child health, Immunizations and OPD (out patient department).',
+      'OpenSRP Enterprise',
+      [33.9497898543623, -13.679143200126184]
+    ],
+    [
+      'WHO Antenatal Care Research Implementation',
+      'Rwanda and Zamia',
+      'World Health Organization',
+      '4 year research implementation grant to test out how countries can implement the WHO ANC Reference app, and support them in doing so.',
+      'OpenSRP Enterprise',
+      [29.92692327183228, -1.9298387516984918]
+    ],
+    [
+      'Antenatal Blood Pressure Monitoring with OptiBP',
+      'Bangladesh, Tanzania, South Africa',
+      'World Health Organization',
+      'Multi-country research study to test the efficacy of a cuffless electronic algorithm embedded into a mobile phone application (OptiBP), to accurately assess blood pressure among the general population in Bangladesh and Tanzania and pregnant women in South Africa. Using an Ona form to collect the data from the study.',
+      'OpenSRP Enterprise',
+      [23.989024589739525, -30.669885210969273]
+    ],
+    [
+      'Open Guidelines RDTs for Covid-19 and Malaria',
+      'Kenya, Indonesia',
+      'Bill and Melinda Gates Foundation',
+      'Integration of an RDT reader App into OpenSRP, to allow for OpenSRP to be able to read and interpret an RDT test result, for Covid-19 and Malaria.',
+      'OpenSRP Enterprise',
+      [106.99157991468658, -6.787133653966312]
+    ],
+    [
+      'Mobile Integration for Early Childhood Development',
+      'Vietnam',
+      'UNICEF Vietnam',
+      'Track early childhood development using community members and smartphones.',
+      'OpenSRP Enterprise',
+      [106.79875384963796, 10.903508584815116]
+    ],
+    [
+      'Digital Immunization Project',
+      'Tunisia',
+      'UNICEF Tunisia',
+      'Digital immunization registration and tracking project.',
+      'OpenSRP Enterprise',
+      [9.835636904548188, 34.219312935253214]
+    ],
+    [
+      'STEPS',
+      'Brazil',
+      'World Health Organization',
+      'A household member sampling app that allows WHO member countries to randomly sample adults for their routine non-communicable disease burden surveys. Specifically, updating of eSTEPs data management platform and hosting services and STEPS Android application.',
+      'Ona Data',
+      [-48.61420287395467, -20.336058463545978]
+    ]
+  ]
+
+  function buildFeatures(featuresArr) {
+    return featuresArr.map(x => {
+      return {
+        'type': 'Feature',
+        'properties': {
+          'description':
+          `<div class="popup-title">${x[0]}</div><div class="popup-meta">${x[1]} &#xb7; ${x[2]}</div><div class="popup-description">${x[3]}</div><div class="popup-product">Product: <a href="#">${x[4]}</a></div>`,
+          'icon': 'tw-provincial-expy-2'
+        },
+        'geometry': {
+          'type': 'Point',
+          'coordinates': x[5]
+        }
+      }
+    });
+  }
+
+  mapboxgl.accessToken = 'pk.eyJ1Ijoib25hIiwiYSI6IlVYbkdyclkifQ.0Bz-QOOXZZK01dq4MuMImQ';
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/ona/ckhe1gi5408zw19o1paqnmb7e',
@@ -46,68 +196,7 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
       'type': 'geojson',
       'data': {
         'type': 'FeatureCollection',
-        'features': [
-        {
-          'type': 'Feature',
-          'properties': {
-            'description':
-            '<div class="popup-title">Humanitarian Performance Monitoring Dashboard</div><div class="popup-meta">Fiji &#xb7; UNICEF Pacific</div><div class="popup-description">Data management for emergencies and education</div><div class="popup-product">Product: <a href="#">Canopy Analytics</a></div>',
-            'icon': 'tw-provincial-expy-2'
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [178.065033, -17.71337]
-          }
-        },
-        {
-          'type': 'Feature',
-          'properties': {
-            'description':
-            '<div class="popup-title">Hello Mwana</div><div class="popup-meta">Zimbabwe &#xb7; UNICEF</div><div class="popup-description">Hello Mwana uses SMS to report data and client information with a goal to help reduce maternal, neonatal and child mortality.</div><div class="popup-product">Product: <a href="#">Ona Data</a></div>',
-            'icon': 'tw-provincial-expy-2'
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [29.89738917028741, -19.033243044768888]
-          }
-        },
-        {
-          'type': 'Feature',
-          'properties': {
-            'description':
-            '<div class="popup-title">Community Health Worker App</div><div class="popup-meta">Liberia &#xb7; Last Mile Health</div><div class="popup-description">An offline-focused OpenSRP implementation that equips CHWs to improve health outcomes in the hardes-to-reach villages.</div><div class="popup-product">Product: <a href="#">OpenSRP Enterprise</a></div>',
-            'icon': 'tw-provincial-expy-2'
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [-7.716625530707781, 5.851205406393821]
-          }
-        },
-        {
-          'type': 'Feature',
-          'properties': {
-            'description':
-            '<div class="popup-title">Mobile Operational Data Acquisition Platform</div><div class="popup-meta">Worldwide &#xb7; WFP Global</div><div class="popup-description">Uses Ona Data and RapidPro to serve as global data collection and management systems, facilitating structured data collection and sharing across WFP programs, country, regional, and global offices.</div><div class="popup-product">Product: <a href="#">Ona Data</a></div>',
-            'icon': 'tw-provincial-expy-2'
-          },
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [12.407255692520218, 41.821809374594224]
-          }
-        },
-          {
-            'type': 'Feature',
-            'properties': {
-              'description':
-              '<div class="popup-title">Child Friendly Communities</div><div class="popup-meta">West and Central Africa &#xb7; UNICEF</div><div class="popup-description">Communitiy platform across five countries for reducing child and maternal mortality.</div><div class="popup-product">Product: <a href="#">OpenSRP Enterprise</a></div>',
-              'icon': 'tw-provincial-expy-2'
-            },
-            'geometry': {
-              'type': 'Point',
-              'coordinates': [-17.520735215342867, 14.744597697865371]
-            }
-          }
-        ]
+        'features': buildFeatures(features)
       }
     });
 
